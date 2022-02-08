@@ -37,7 +37,7 @@ function receiveInput() {
     let firstArray = [];
     let firstNumber = 7;
     let secondNumber = 0;
-    let operator = "x";
+    let operator = "";
 
     const btn0 = document.querySelector("#b0");
     btn0.addEventListener("click", () => {
@@ -89,7 +89,22 @@ function receiveInput() {
         firstArray.push(9);
         document.getElementById("display").textContent = firstArray.join("");
     });
-
+    const btnDivide = document.querySelector("#bDivide");
+    btnDivide.addEventListener("click", () => {
+        operator = "/";
+    });
+    const btnMultiply = document.querySelector("#bMultiply");
+    btnMultiply.addEventListener("click", () => {
+        operator = "x";
+    });
+    const btnAdd = document.querySelector("#bAdd");
+    btnAdd.addEventListener("click", () => {
+        operator = "+";
+    });
+    const btnSubtract = document.querySelector("#bSubtract");
+    btnSubtract.addEventListener("click", () => {
+        operator = "-";
+    });
 }
 console.log(operate());
 receiveInput();
