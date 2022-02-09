@@ -17,27 +17,25 @@ function operate(firstNumber, operator, secondNumber) {
 
     if(operator === "x") {
        let result = multiply(firstNumber, secondNumber);
-       document.getElementById("screen").textContent = result;
+       //document.getElementById("screen").textContent = result;
        return result;
     } else if (operator === "-") {
         let result = subtract(firstNumber, secondNumber);
-        document.getElementById("screen").textContent = result;
+        //document.getElementById("screen").textContent = result;
         return result;
     } else if (operator === "+") {
         let result = add(firstNumber, secondNumber);
-        document.getElementsById("screen").textContent = result;
+        //document.getElementById("screen").textContent = result;
         return result;
     } else if (operator === "/") {
         let result = divide(firstNumber, secondNumber);
-        document.getElementById("screen").textContent = result;
+        //document.getElementById("screen").textContent = result;
         return result;
     }
 }
 function receiveInput() {
     let firstArray = [];
     let secondArray = [];
-    let firstNumber = 7;
-    let secondNumber = 0;
     let operator = null;
 
     const btn0 = document.querySelector("#b0");
@@ -48,6 +46,8 @@ function receiveInput() {
         } else {
             secondArray.push(0);
             document.getElementById("display").textContent = secondArray.join("");
+            console.log(operator);
+            console.log(secondArray);
         }
     });    
     const btn1 = document.querySelector("#b1");
@@ -158,7 +158,19 @@ function receiveInput() {
     });
     const btnEquals = document.querySelector("#bEquals");
     btnEquals.addEventListener("click", () => {
-
+        console.log(firstArray);
+        let firstNumber ;
+        if(Array.isArray(firstArray) === true) {
+            firstNumber = parseInt(firstArray.join(""));
+        } else firstNumber = firstArray;
+        
+        let secondNumber = parseInt(secondArray.join(""));
+        document.getElementById("display").textContent = operate(firstNumber, operator, secondNumber);
+        firstArray = operate(firstNumber, operator, secondNumber);
+        secondArray.length = 0;
+        console.log(operator);
+        console.log(secondArray);
+        console.log(firstArray);
     });
 }
 console.log(operate());
