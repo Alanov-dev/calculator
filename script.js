@@ -163,14 +163,21 @@ function receiveInput() {
         if(Array.isArray(firstArray) === true) {
             firstNumber = parseInt(firstArray.join(""));
         } else firstNumber = firstArray;
-        
+
         let secondNumber = parseInt(secondArray.join(""));
         document.getElementById("display").textContent = operate(firstNumber, operator, secondNumber);
         firstArray = operate(firstNumber, operator, secondNumber);
-        secondArray.length = 0;
+        secondArray = [];
         console.log(operator);
         console.log(secondArray);
         console.log(firstArray);
+    });
+    const btnClear = document.querySelector("#clear");
+    btnClear.addEventListener("click", () => {
+        firstArray = [];
+        secondArray = [];
+        operator = null;
+        document.getElementById("display").textContent = firstArray;
     });
 }
 console.log(operate());
